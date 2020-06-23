@@ -29,7 +29,7 @@ export class MoedaService {
     { "sigla": "INR", "descricao": "Rupia indiana" },
     { "sigla": "JPY", "descricao": "Iene Japonês" },
     { "sigla": "KRW", "descricao": "Won Sul-Coreano" },
-    { "sigla": "MXN", "descricao": "Peso Mexicano" },+z
+    { "sigla": "MXN", "descricao": "Peso Mexicano" },
     { "sigla": "MYR", "descricao": "Málasia Ringgit" },
     { "sigla": "NOK", "descricao": "Coroa da Noruega" },
     { "sigla": "NZD", "descricao": "Dólar da Nova Zelândia" },
@@ -43,5 +43,22 @@ export class MoedaService {
     { "sigla": "TRY", "descricao": "Lira Turca" },
     { "sigla": "USD", "descricao": "Dólar Americano" },
     { "sigla": "ZAR", "descricao": "Rand da África do Sul" },
-  ]
+  ];
+
+  listarTodas(): Moeda[] {
+    if (this.moedas) {
+      return this.moedas;
+    }
+
+    this.moedas = [];
+
+    for (let moedaObj of this.moedasObj) {
+      let moeda: Moeda = new Moeda();
+      Object.assign(moeda, moedaObj);
+      this.moedas.push(moeda);
+    }
+
+    return this.moedas;
+  }
+  
 }
